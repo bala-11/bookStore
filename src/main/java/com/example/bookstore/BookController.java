@@ -6,8 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -16,6 +20,9 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private MyBookListService myService;
 
     @GetMapping("/")
     public String home() {
@@ -38,4 +45,20 @@ public class BookController {
         bookService.save(b);
         return "redirect:/available_books";
     }  
+
+    @GetMapping(value="/my_books")
+    public String getMyBooks() {
+        return "myBooks";
+    }
+
+    @RequestMapping("/mylist/{id}")
+    public String getMyList(@PathVariable ("id") int id){
+        Book b= bookService.getBookById(id);
+
+        MyBookList bl = new MyBookList(b.getId(),b.getName(),b.getAuthor(),b.getPrice());
+
+        myService.saveMyBooks(bl);
+        return "redirect:/my_books";
+    }
+    
 }
