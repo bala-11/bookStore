@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,17 +47,17 @@ public class BookController {
         return "redirect:/available_books";
     }  
 
-    @GetMapping(value="/my_books")
-    public String getMyBooks() {
+    @GetMapping("/my_books")
+    public String getMyBooks(Model model) {
+        List<MyBookList>list = myService.getAllBook();
+        model.addAttribute("book", list);
         return "myBooks";
     }
 
     @RequestMapping("/mylist/{id}")
     public String getMyList(@PathVariable ("id") int id){
         Book b= bookService.getBookById(id);
-
         MyBookList bl = new MyBookList(b.getId(),b.getName(),b.getAuthor(),b.getPrice());
-
         myService.saveMyBooks(bl);
         return "redirect:/my_books";
     }

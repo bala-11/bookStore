@@ -14,16 +14,9 @@ public class MyBookList {
     private String author;
     private String price;
 
-    
-    
-
-
     public MyBookList() {
         super();
     }
-
-    
-
 
     public MyBookList(int id, String name, String author, String price) {
         this.id = id;
@@ -31,9 +24,6 @@ public class MyBookList {
         this.author = author;
         this.price = price;
     }
-
-
-
 
     @Override
     public String toString() {
@@ -64,8 +54,5 @@ public class MyBookList {
     }
     public void setPrice(String price) {
         this.price = price;
-    }
-
-
-    
+    }    
 }
