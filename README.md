@@ -5,10 +5,10 @@ All books in the store show in available book section.
 <br />
 In the availble book section , you have two options either you add the book to your wish list or You can delete the book in the list.
 <br />
-Home Section<br />
+Home Section
 ![image](https://user-images.githubusercontent.com/80876092/232656993-cf66d5ef-3e9d-42ff-9b00-db4a11762e9c.png)
 <br />
-Available books <br />
+Available books
 ![image](https://user-images.githubusercontent.com/80876092/232657151-473d554f-5ce1-4369-b173-44f7f350bacf.png)
 <br />
 My books<br />
